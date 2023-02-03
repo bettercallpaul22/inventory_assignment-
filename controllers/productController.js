@@ -17,8 +17,7 @@ export const addproducts = async (req, res) => {
             "INSERT INTO `product_table`( `name`, `description`, `total_in_stock`) VALUES (?)";
           product_db.query(action, [values], (err, product) => {
             if (err) return res.send(err.sqlMessage);
-            console.log(product.in_stock);
-            res.send(product);
+            res.status(200).json("product added successfully");
           });
         }
       }
@@ -56,9 +55,9 @@ export const updateProduct = async (req, res) => {
   product_db.query(
     action,
     [name, description, total_in_stock, productId],
-    (err, product) => {
+    (err) => {
       if (err) res.status(400).json(err.sqlMessage);
-      res.status(200).json({message:"product updated successfully"});
+      res.status(200).json({message:"Stock updated successfully"});
     }
   );
 };

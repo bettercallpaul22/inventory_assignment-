@@ -1,0 +1,121 @@
+
+Auth validation: Validating input before user can register and send  to the database
+JOI input validation : It validate the input of a user email & password
+password : minimum(6)
+email: must be a valid email
+
+
+---------------Auth Route----------------------------
+Product validation: it check the database to make sure there's
+no duplicate of same product or it will  return a 400 response to the user
+
+-------------------------------------------------------------------------------------
+Register a user
+http://localhost:5000/api/user/register
+method: POST
+---Request body to create a user------
+{
+  "firstName": "obaro",
+  "lastName": "paul",
+  "email": "admin@mail.com",
+  "password": "1234567"
+}
+
+-----Response------
+"user created successfully"
+---------------------------------------------------------------------------------------
+
+
+Login a user
+http://localhost:5000/api/user/login
+method: POST
+------Request body to login a user------   
+{
+  "email": "admin@mail.com",
+  "password": "1234567"
+}
+
+-----Response------
+"login successfull"
+---------------------------------------------------------------------------------------------
+
+
+---------------------PRODUCT ROUTES------------------
+create product routes
+http://localhost:5000/api/product/addproduct
+method: POST
+
+------Request body to add a product------   
+{
+  "name": "paracetamol",
+  "description": "emzor paracetamol",
+  "total_in_stock":5
+}
+
+-----Response------
+"Product added successfully"
+
+---------------------------------------------------------------------------------
+
+Fetch all products in stock 
+http://localhost:5000/api/product/getproducts
+method: GET
+
+         -----Response------
+
+[
+  {
+    "product_id": 81,
+    "name": "paracetamol",
+    "description": "emzor paracetamol",
+    "total_in_stock": 5
+  },
+  {
+    "product_id": 82,
+    "name": "paracetamol2",
+    "description": "emzor paracetamol2",
+    "total_in_stock": 18
+  }
+]
+-------------------------------------------------------------------------------------
+
+Fetch a product by ID
+http://localhost:5000/api/product/82
+ method: GET
+  -----Response------
+
+
+{
+  "product_id": 82,
+  "name": "paracetamol2",
+  "description": "emzor paracetamol2",
+  "total_in_stock": 18
+}
+
+------------------------------------------------------------------------------------------
+
+Update a product in stock
+http://localhost:5000/api/product/update/82
+method: PUT
+------Request body to update a product------   
+{
+  "name": "paracetamol2",
+  "description": "emzor paracetamol2 updated",
+  "total_in_stock":100
+}
+
+  -----Response------
+{
+  "message": "Stock updated successfully"
+}
+
+
+-------------------------------------------------------------------------------
+
+Delete a product 
+http://localhost:5000/api/product/delete/82
+method: DELETE
+
+ -----Response------
+"product deleted successfully"
+

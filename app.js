@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import AuthRoute from "./routes/AuthRoute.js";
 
-import { db } from "./db.js";
+import { db } from "./user_db.js";
 import productRoute from "./routes/productRoute.js";
 const app = express();
 
